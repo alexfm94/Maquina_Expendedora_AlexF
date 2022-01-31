@@ -16,11 +16,10 @@ public class PruebaMaquinaExpendedora {
 
 	public static void main(String[] args) {
 		
-		ArrayList<Refresco> refrescos = new ArrayList<Refresco>();
-		
 		MaquinaExpendedora m = new MaquinaExpendedora();
 		Cliente c1 = new Cliente("Carlos", 2);
 		Cliente c2 = new Cliente("Juan", 0.4);
+		Cliente c3 = new Cliente("Matilde", 2);
 		Reponedor rep = new Reponedor("Maria");
 		Recaudador rec = new Recaudador("Diana");
 		
@@ -32,6 +31,7 @@ public class PruebaMaquinaExpendedora {
 			//c2.comprarRefrescoMaquina(m, refresco1, 0.5); -> Prueba fondos del cliente insuficientes
 			//c1.comprarRefrescoMaquina(m, refresco2, 0.6); -> Prueba refrescos insuficentes;
 			c1.comprarRefrescoMaquina(m, refresco1, 0.7);
+			c3.comprarRefrescoMaquina(m, refresco1, 0.5);
 			c1.comprarRefrescoMaquina(m, refresco1, 0.8);
 		} catch (ImporteInsuficienteParaCompraException e) {
 			System.out.println("El importe introducido no es suficiente.");
@@ -41,7 +41,11 @@ public class PruebaMaquinaExpendedora {
 			System.out.println("No quedan refrescos");
 		}
 		
+		System.out.println("stock disponible de AQUARIUS: " + refresco3.getStock());
 		rep.reponerRefresco(refresco3, 10);
+		System.out.println();
+		System.out.println("stock disponible de AQUARIUS: " + refresco3.getStock());
+		System.out.println();
 		rec.pedirInformes(m);
 		rec.enseniarInforme();
 		
